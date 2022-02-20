@@ -1,0 +1,18 @@
+/*
+ Theme Name:   Side
+ Description:  Side
+ Template:     twentytwentyone
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Text Domain:  side
+*/
+
+/* Do not add styles here. Add them or import them in style.scss*/
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+:root {
+    --global--font-primary: 'Source Sans Pro', sans-serif;
+    --global--font-secondary: 'Source Sans Pro', sans-serif;
+    --global--color-background: white;
+}
