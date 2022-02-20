@@ -95,6 +95,13 @@ module.exports = {
                 },
                 {
                     loader: 'svgo-loader',
+                    options: {
+                        multipass: true,
+                        js2svg: {
+                          indent: 2,
+                          pretty: false,
+                        }
+                      }
                 },
             ],
         }

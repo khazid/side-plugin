@@ -1,5 +1,3 @@
-import { Intl } from "intl";
-
 export const calcBath = (full, half) => {
 
     let totalHalf = half / 2;
@@ -8,8 +6,15 @@ export const calcBath = (full, half) => {
 }
 
 export const formatPrice = (amount) => {
-    const formatPrice = `$${new Intl.NumberFormat().format(amount)}`
-
+    const formatPrice = `${(amount)
+        .toLocaleString('en-US',
+            {
+                style:'currency',
+                currency:'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+            }
+        )}`
     return formatPrice
 
 }

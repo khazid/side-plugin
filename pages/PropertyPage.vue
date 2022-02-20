@@ -8,10 +8,9 @@
                 <div v-if="loading">
                     Loading...
                 </div>
-                <div class="row" v-else>
+                <div v-else>
                     <PropertyOptions
                     :properties="propertyArr"
-                    :likes="likes"
                     />
                 </div>    
             </div>
@@ -33,21 +32,11 @@ export default {
         return {
             loading: true,
             propertyArr:[],
-            likes:[],
         }
     },
     mounted(){
 
         this.getProperties()
-
-        try {
-          if (localStorage.getItem('likes') !== null)
-            this.likes = JSON.parse(localStorage.getItem('likes'))
-
-        } catch (error) {
-          this.likes = []
-          console.log(error)
-        }
             
     },
     methods: {
@@ -59,15 +48,14 @@ export default {
                     'Authorization': 'Basic c2ltcGx5cmV0czpzaW1wbHlyZXRz'  
                 }
             }).then((response)=>{
-                return JSON.parse(response)
-            }).then((data)=>{
-                
+                let data = response.data
+            
                 this.propertyArr = data.map(item => ({
                     photo: item.photos[0],
                     bath: calcBath(item.property.bathsFull, item.property.bathsHalf),
                     bedrooms: item.property.bedrooms,
                     area: item.property.area,
-                    price: price(item.listPrice),
+                    price: formatPrice(item.listPrice),
                     listdate: formatDate(item.listDate),
                     address: item.address.full,
                     listingId: item.listingId
@@ -76,7 +64,7 @@ export default {
                 this.setDataCache()
                 this.loading = false;
 
-            })
+            }).catch((err) => console.log(err))
 
             
             
@@ -105,7 +93,3 @@ export default {
       
 }
 </script>
-
-<style>
-
-</style>

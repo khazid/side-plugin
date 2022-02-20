@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="row">
     <div class="col-lg-4 col-md-6 col-sm-6 d-lg-block prop-item" v-for="(property, index) in properties" :key="index">
         <div class="card">
             <img
@@ -29,13 +29,29 @@ export default {
         properties:{
             type: Array
         },
-        likes:{
-            type: Array
+    },
+    data(){
+        return {
+            likes:[]
         }
     },
+    mounted(){
+        try {
+          if (localStorage.getItem('likes') !== null)
+            this.likes = JSON.parse(localStorage.getItem('likes'))
+
+        } catch (error) {
+          this.likes = []
+          console.log(error)
+        }
+    },
+    
     watch:{
-        likes:(value) => {
-          value && localStorage.setItem('likes', JSON.stringify(value))
+        likes:{
+            handler:(value) => {
+                value && localStorage.setItem('likes', JSON.stringify(value))
+            },
+            deep: true
         }
     },
     methods: {

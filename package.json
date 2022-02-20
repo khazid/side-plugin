@@ -20,7 +20,7 @@
   },
   "scripts": {
     "build": "webpack --mode=production",
-    "watch": "webpack --watch"
+    "watch": "webpack --mode=development --watch"
   },
   "dependencies": {
     "axios": "^0.26.0",
