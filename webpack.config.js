@@ -1,5 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const {VueLoaderPlugin} = require('vue-loader')
 
 module.exports = {
   context: __dirname,
@@ -40,71 +41,75 @@ module.exports = {
                 },
             ],
         },
-      {
-        test: /\.s?css$/,
-        use: [
-            MiniCssExtractPlugin.loader, 
-            'css-loader', 
-            {
-                loader: "sass-loader",
-                options: {
-                sourceMap: true,
+        {
+            test: /\.vue$/,
+            exclude: /node_modules/,
+            loader: 'vue-loader'
+        },
+        {
+            test: /\.s?css$/,
+            use: [
+                MiniCssExtractPlugin.loader, 
+                'css-loader', 
+                {
+                    loader: "sass-loader",
+                    options: {
+                    sourceMap: true,
+                    },
+                }
+            ]
+        },
+        {
+            test: /\.(png|jpg|gif)$/,
+            use: [
+                {
+                    loader: 'file-loader',
+                    options: {
+                        outputPath: 'images',
+                        name: '[name].[ext]',
+                    },
                 },
-            }
-        ]
-      },
-      {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-            {
-                loader: 'file-loader',
-                options: {
-                    outputPath: 'images',
-                    name: '[name].[ext]',
+            ],
+        },
+        {
+            test: /\.(otf|woff(2)?|ttf|eot)$/,
+            use: [
+                {
+                    loader: 'file-loader',
+                    options: {
+                        outputPath: 'fonts',
+                        name: '[name]-[hash:8].[ext]',
+                    },
                 },
-            },
-        ],
-    },
-    {
-        test: /\.(otf|woff(2)?|ttf|eot)$/,
-        use: [
-            {
-                loader: 'file-loader',
-                options: {
-                    outputPath: 'fonts',
-                    name: '[name]-[hash:8].[ext]',
+            ],
+        },
+        {
+            test: /\.(svg)$/,
+            use: [
+                {
+                    loader: 'file-loader',
+                    options: {
+                        outputPath: 'svgs',
+                        name: '[name].[ext]',
+                    },
                 },
-            },
-        ],
-    },
-      {
-        test: /\.(svg)$/,
-        use: [
-            {
-                loader: 'file-loader',
-                options: {
-                    outputPath: 'svgs',
-                    name: '[name].[ext]',
+                {
+                    loader: 'svgo-loader',
                 },
-            },
-            {
-                loader: 'svgo-loader',
-                options: {
-                    plugins: [
-                        { removeTitle: false },
-                        { convertColors: { shorthex: false } },
-                        { convertPathData: false },
-                        { removeViewBox: false },
-                    ],
-                },
-            },
-        ],
-    }
+            ],
+        }
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].css'
     }),
-  ]
+    new VueLoaderPlugin(),
+  ],
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js', '.vue' ],
+    alias: {
+        'vue': '@vue/runtime-dom'
+    }
+},
 };

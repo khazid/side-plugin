@@ -1,18 +1,192 @@
-/*
- Theme Name:   Side
- Description:  Side
- Template:     twentytwentyone
- Version:      1.0.0
- License:      GNU General Public License v2 or later
- License URI:  http://www.gnu.org/licenses/gpl-2.0.html
- Text Domain:  side
-*/
+.property-listing {
+  padding: 5%;
+  border: 1px solid #f4f4f4;
 
-/* Do not add styles here. Add them or import them in style.scss*/
+  .container {
+    padding: 5%;
+    border: 1px solid #fff;
+  }
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
-:root {
-    --global--font-primary: 'Source Sans Pro', sans-serif;
-    --global--font-secondary: 'Source Sans Pro', sans-serif;
-    --global--color-background: white;
+  .card {
+    border: none;
+  }
+
+  img {
+    width: 315px;
+    height: 280px;
+    border-radius: 4px;
+    z-index: 1;
+  }
+
+
+  .card-price {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 24px;
+    /* identical to box height, or 92% */
+
+    display: flex;
+    align-items: center;
+
+    color: #2D2D2D;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: -1px;
+  }
+
+  li {
+    float: left;
+    display: block;
+    color: #2D2D2D;
+    text-align: center;
+    text-decoration: none;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 32px;
+  }
+
+  li::after {
+    content: "|";
+    float: right;
+    color: #2D2D2D;
+    padding: 0 10px;
+  }
+
+  li:last-child::after {
+    display: none;
+  }
+
+
+  .card-text {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 32px;
+    /* identical to box height, or 213% */
+
+    display: flex;
+    align-items: center;
+
+    color: #2D2D2D;
+  }
+
+  .card-date {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    color: #979797;
+  }
+
+  .property-heart {
+
+    background-image: url('../side/images/heart-stroke.svg');
+    z-index: 1;
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    background-repeat: no-repeat;
+    background-size: 39.17px 35.94px;
+
+  }
+
+  .property-heart.active {
+
+    background-image: url('../side/images/heart-fill.svg');
+    z-index: 1;
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    background-repeat: no-repeat;
+    background-size: 39.17px 35.94px;
+
+  }
+
+  button:not(:hover):not(:active):not(.has-background) {
+    background-color: transparent !important;
+  }
+
+  button:hover {
+    border-color: transparent !important;
+
+  }
+}
+
+
+.property-listing-title {
+  width: auto;
+  height: auto;
+  background: #f4f4f4;
+  border-radius: 1px;
+
+  h3 {
+    height: 40px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 40px;
+    color: #2D2D2D;
+    padding: 29px 49px;
+  }
+}
+
+@media(max-width: 1199px) {
+  .property-listing li {
+    font-size: 15px;
+  }
+
+}
+
+@media(max-width: 991px) {
+  .property-listing-title {
+    height: 50px;
+
+    h3 {
+      font-size: 25px;
+      padding: 0px 16px;
+  
+    }
+  }
+
+}
+
+@media(max-width: 767px) {
+  .property-listing-title h3 {
+    font-size: 20px;
+    padding: 4px 16px;
+
+  }
+
+  .property-listing li {
+    font-size: 12px;
+  }
+
+}
+
+@media(max-width: 414px) {
+
+  .property-listing-title h3 {
+    font-size: 14px;
+    padding: 4px 16px;
+
+  }
+
+  .property-listing li {
+    font-size: 17px;
+  }
+
 }
