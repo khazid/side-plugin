@@ -25,7 +25,7 @@
   "dependencies": {
     "axios": "^0.26.0",
     "file-loader": "^6.2.0",
-    "intl": "^1.2.5",
+    "svg-inline-loader": "^0.8.2",
     "vue": "^3.2.31",
     "vue-loader": "^17.0.0"
   }

@@ -85,26 +85,15 @@ module.exports = {
         },
         {
             test: /\.(svg)$/,
-            use: [
+            oneOf: [
                 {
-                    loader: 'file-loader',
-                    options: {
-                        outputPath: 'svgs',
-                        name: '[name].[ext]',
-                    },
-                },
-                {
-                    loader: 'svgo-loader',
-                    options: {
-                        multipass: true,
-                        js2svg: {
-                          indent: 2,
-                          pretty: false,
-                        }
-                      }
-                },
-            ],
+                    include: path.resolve(__dirname, '../node_modules/package-name/'),
+                    use: 'svg-inline-loader'
+                }
+            ]
+            
         }
+        
     ]
   },
   plugins: [
