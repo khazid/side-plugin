@@ -27,11 +27,12 @@ if ( ! function_exists('side_plugin_setup') ) {
             true
         );
 
-        // wp_enqueue_script('vue', 'https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js', [], '2.5.17');
-        
     }
 }
 
+/**
+ * funcion que agrega la etiqueta a utilizar con el componente de Vue
+ */
 function side_property_listing_show($atts) {
 
     return '
